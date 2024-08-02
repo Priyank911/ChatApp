@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -19,6 +21,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var registerbtn : Button
     private lateinit var loginuptext : Button
     private lateinit var auth : FirebaseAuth
+    private lateinit var DbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,21 +44,29 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
         }
         registerbtn.setOnClickListener{
+            val name = edt_name.text.toString()
             val email = edt_email.text.toString()
             val password = edt_password.text.toString()
 
-           register(email,password)
+           register(name,email,password)
         }
     }
-    private fun register(email : String,password : String){
+    private fun register(name: String,email : String,password : String){
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    addUserToDatabase(name,email,auth.currentUser?.uid!!)
                    val intent = Intent(this@RegisterActivity, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(this@RegisterActivity,"Some Error Occurred in Register", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun addUserToDatabase(name: String, email: String,uid:String){
+        DbRef = FirebaseDatabase.getInstance().getReference()
+        DbRef.child("user").child(uid).setValue(User(name,email,uid))
     }
 }

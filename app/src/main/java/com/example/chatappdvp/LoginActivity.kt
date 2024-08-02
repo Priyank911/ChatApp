@@ -53,6 +53,8 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 } else {
                    Toast.makeText(this@LoginActivity,"Error Occured in Login", Toast.LENGTH_SHORT).show()
                     startActivity(intent)
