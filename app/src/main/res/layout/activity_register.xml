@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/chatcrazebg"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
     <ImageView
         android:id="@+id/ap_logo"
         android:layout_width="250dp"
@@ -22,27 +22,31 @@
         android:layout_below="@id/ap_logo"
         android:layout_marginTop="10dp"
         android:hint="Name"
+        android:textColor="@color/white"
         android:background="@drawable/edt_bg"
         android:paddingLeft="15dp"
-        android:fontFamily="@font/silkscreenregular"
+        android:fontFamily="@font/rajdhanibold"
         android:textColorHint="@color/white"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
+
     <EditText
         android:id="@+id/edt_email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/edt_name"
-        android:layout_marginTop="20dp"
-        android:hint="Email"
-        android:background="@drawable/edt_bg"
-        android:paddingLeft="15dp"
-        android:fontFamily="@font/silkscreenregular"
-        android:textColorHint="@color/white"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        />
+        android:background="@drawable/edt_bg"
+        android:hint="Email"
+        android:fontFamily="@font/rajdhanibold"
+        android:paddingLeft="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
     <EditText
         android:id="@+id/edt_password"
         android:layout_width="match_parent"
@@ -50,15 +54,16 @@
         android:layout_below="@id/edt_email"
         android:layout_marginTop="20dp"
         android:hint="Password"
+        android:textColor="@color/white"
         android:background="@drawable/edt_bg"
         android:paddingLeft="15dp"
-        android:fontFamily="@font/silkscreenregular"
+        android:fontFamily="@font/rajdhanibold"
         android:textColorHint="@color/white"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
     <Button
-        android:id="@+id/loginbtn"
+        android:id="@+id/registerbtn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/edt_password"
@@ -69,15 +74,15 @@
         android:fontFamily="@font/silkscreenregular"
         android:background="@drawable/edt_button"
         />
-    <TextView
-        android:id="@+id/signuptext"
+    <Button
+        android:id="@+id/loginuptext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="Already have account? Login Here"
-        android:layout_below="@id/loginbtn"
+        android:layout_below="@id/registerbtn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="1dp"
         android:textSize="14dp"
         android:fontFamily="@font/silkscreenregular"
         android:textColor="@color/white"
